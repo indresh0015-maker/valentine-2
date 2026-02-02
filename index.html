@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Valentine</title>
+<style>
+  body {
+    background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
+  }
+
+  /* Falling hearts */
+  .heart {
+    position: fixed;
+    top: -10px;
+    font-size: 20px;
+    animation: fall linear infinite;
+    color: #e91e63;
+  }
+
+  @keyframes fall {
+    to { transform: translateY(110vh); }
+  }
+
+  .card {
+    background: white;
+    padding: 25px;
+    border-radius: 20px;
+    text-align: center;
+    width: 320px;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+    z-index: 2;
+  }
+
+  h2 {
+    color: #e91e63;
+  }
+
+  button {
+    padding: 12px 30px;
+    border: none;
+    border-radius: 25px;
+    font-size: 16px;
+    cursor: pointer;
+    background: #e91e63;
+    color: white;
+    margin-top: 15px;
+  }
+
+  img {
+    width: 100%;
+    border-radius: 15px;
+    margin-top: 15px;
+    display: none;
+    animation: pop 0.6s ease;
+  }
+
+  #msg, #love {
+    display: none;
+    margin-top: 10px;
+  }
+
+  #msg {
+    font-size: 20px;
+    color: #e91e63;
+  }
+
+  #love {
+    font-size: 22px;
+    font-weight: bold;
+    color: #ff1744;
+    animation: glow 1.5s ease-in-out infinite alternate;
+  }
+
+  @keyframes glow {
+    from { text-shadow: 0 0 5px #ff1744; }
+    to { text-shadow: 0 0 20px #ff1744; }
+  }
+
+  @keyframes pop {
+    0% { transform: scale(0.5); opacity: 0; }
+    100% { transform: scale(1); opacity: 1; }
+  }
+</style>
+</head>
+<body>
+
+<div class="card">
+  <h2>Juhi, will you be my Valentine? 💕</h2>
+  <button onclick="yesClicked()">Yes</button>
+
+  <img id="photo" src="photo.jpg" alt="Love photo">
+  <div id="love">I love you Juhi ❤️</div>
+  <div id="msg">Ishu is happy 💖</div>
+</div>
+
+<!-- Romantic music -->
+<iframe width="0" height="0"
+src="https://www.youtube.com/embed/2S1E9JrPqzI?autoplay=1&loop=1&playlist=2S1E9JrPqzI"
+frameborder="0"
+allow="autoplay">
+</iframe>
+
+<script>
+function yesClicked() {
+  document.getElementById("photo").style.display = "block";
+  document.getElementById("love").style.display = "block";
+  document.getElementById("msg").style.display = "block";
+}
+
+/* Falling hearts */
+function createHeart() {
+  const heart = document.createElement("div");
+  heart.classList.add("heart");
+  heart.innerHTML = "❤️";
+  heart.style.left = Math.random() * 100 + "vw";
+  heart.style.animationDuration = (Math.random() * 3 + 2) + "s";
+  document.body.appendChild(heart);
+
+  setTimeout(() => heart.remove(), 5000);
+}
+
+setInterval(createHeart, 300);
+</script>
+
+</body>
+</html>
